@@ -21,7 +21,7 @@ Le API di YouTube forniscono un accesso diretto ai dati aggiornati dei video, co
 *"Run data analytics at speed and scale for observability, security, and search with Kibana. Powerful analysis on any data from any source, from threat intelligence to search analytics, logs to application monitoring, and much more."*
 
 ## Pipeline
-<img src="Pipeline.pdf" style="width:100%; height:100%;">
+<img src="Pipeline.png" style="width:100%; height:100%;">
 
 
 
