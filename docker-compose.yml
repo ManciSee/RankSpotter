@@ -11,21 +11,6 @@ services:
     #   - ./data/container_data/zk-txn-logs:/var/lib/zookeeper/log
     networks:
       - network
-
-  # logstash:
-  #   image: docker.elastic.co/logstash/logstash:7.12.0
-  #   ports: 
-  #     - 9090:9090
-  #   volumes:
-  #     - ./logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
-  #   depends_on:
-  #     - kafka
-  #   # environment:
-  #   #   - LOGSTASH_JAVA_OPTS=-Dlog4j2.disable.jmx=true
-  #   networks:
-  #     - network
-
-
   spark:
     build: ./spark/
     depends_on:
