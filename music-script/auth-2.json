@@ -1,0 +1,14 @@
+{
+    "type": "service_account",
+    "private_key_id": "2f6af21147d5e3fc18172be2fe1535f1a8d08af8",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCoa9CePKXsMUqI\nqa9M68bW8weBcEaRPcf2yXm80Th3wO5ZywfVlM8vsGfc19H9Ah9sqHYXSU+s1D1y\nj+4WJWFpOxOfFApsFOaP+Lb0NICzW2tBuYyqmmQ1p8snSo7/U3S7WYkXGqCyU1wv\ngQlJMkX4O3OqBu8jj0V1IU3IEjYD5NacfqkpAAwO2PDu+qltePNx/78pQ50QITIM\nmwhZVw0zkK0c+0XT/naV3NR6UT1aAgcgnbL34WvLnDp2UZdRZsgMytfM37Jb2DxC\nAw4JYIxMAYjFkgNJwcRJJHavAtwt8S3Tk/kq4dTTtqS3RUwIv83q1sToSbGdgJUc\nIJ8AhJPXAgMBAAECggEAJORE9LxdLfEYHfppS0SkMAZZIQnKc1sgl5bHY0xC/bxV\nmXanNyoa/hu6jH374dtarc7y2yP0X2u4MAWGBfTXMxk9MY3OwKENZgD5dmGfxWnj\ngyiVPvOFutkP34Ht89DAk59Hr7dl9tnaqg8uTQnFmNvQ+K//Jv9lnAQZCRewHEbj\nhDZIEfysr8ZT45Uk12omJfT5cK0pmuBUpSnlpT5t4zLRq38EORFoocyGXas686uy\nFF78P8Fst8aNwbUNnYaYF0tM9dXXm4sYkJeOyI0qaQ2CRFGfx+79YHV95wN3Wjyr\n1OWFEiJf1hnSM1aiDaQ7++riW9MzjR09Uuo8XSSQeQKBgQDaaa6KFVILaW8fazim\n7PWeIRM6wDmdzXuxZ+8J3+8wzyyUtMLD06CBAAsc3SYpiBSgvxbUKg3zNQngtYpv\n0GAl07CT3+hZhWokulq27rwFaBuzw449eYeaG24a9VPKusw5t/YeH5gQ5nIx9RK+\n7z71MaYuT2QbYgd8b9r4DUTOTwKBgQDFZ7fD+1DLvKPzYYSjpdipmfKHW+T2THJi\nWGQT0VRU4LWTfjSSXtortE+GexsR/ClynPZy1Ju+Zn1HzLGWroXVZYInurwG5cWI\nlkmK+BVdfL6xLP5yo8hnOvkyzHton0oLcy3COhUmYfQ9T4IbCRwY8iHvAkwJ+t5D\ncT6BTqBH+QKBgFb6rTJ6SSEYTNOTTI1VYn8lptXHxWotcav1uwEQt92VM6jIz6NS\nvOGClepZu5/gfG6DiuDVGpcXMSbWxRnAPvnxcqmBCrPT6LBVsliVfDUe/6E4KIYc\nxr69W7zKpCLg/wGhXBck99cLHsD8WwnElyroKcjZfwFUqayJkwcjqZoLAoGAPIyx\nuzVs9PEpwM9ape+K44rK72Xqdvm/5BaEq+d7XIWIbHM7oOHjPaCS/AbqqLuV4wfu\nOA6qrt408z8AAd4KQwhdwd3vKpZz3o9qg2vQ8dn/i8znRzahk7htE33RJKgnSBfO\nI1M5hYpqJhwrJivHKIesjOlBdZYzcrBbocICO9ECgYBgVIi0IQPZr5nvs5xVbCkf\nbXIbgebX1JqmnvwA+1xtRiY3FSiYsKo8vJJc/y90VA7ai2WinEcvzEN+y0Jvieqm\nXACrEihNod2lpyElvEjeSYHokGXmbEcRFCCuS/fBMo09xTq+Nn9Ubuaj4FRP1nPI\nqQbxNMetoTgmhFedy3fr0Q==\n-----END PRIVATE KEY-----\n",
+    "client_id": "194921792259-mqgphoq4v5pjoifukuovjbv6i2c5mrm6.apps.googleusercontent.com",
+    "project_id": "geosounds",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/geo-music%40geosounds.iam.gserviceaccount.com",
+    "client_secret": "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",
+    "redirect_uris": ["http://localhost:9090/"],
+    "client_email": "geo-music@geosounds.iam.gserviceaccount.com"
+}

@@ -1,0 +1,135 @@
+version: '3.9'
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:5.4.1
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    # volumes: 
+    #   - ./data/container_data/zk-data:/var/lib/zookeeper/data
+    #   - ./data/container_data/zk-txn-logs:/var/lib/zookeeper/log
+    networks:
+      - network
+
+  # logstash:
+  #   image: docker.elastic.co/logstash/logstash:7.12.0
+  #   ports: 
+  #     - 9090:9090
+  #   volumes:
+  #     - ./logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+  #   depends_on:
+  #     - kafka
+  #   # environment:
+  #   #   - LOGSTASH_JAVA_OPTS=-Dlog4j2.disable.jmx=true
+  #   networks:
+  #     - network
+
+
+  spark:
+    build: ./spark/
+    depends_on:
+      - elasticsearch    
+    networks:
+      - network
+    container_name: "music-spark"
+    volumes:
+      - ./spark:/app
+
+  music-script:
+    build: ./music-script/   
+    networks:
+      - network
+    container_name: "music-script"
+
+
+  fluentbit:
+    image: fluent/fluent-bit:1.8
+    ports: 
+      - 9090:9090
+    volumes:
+      - ./fluent-bit/fluent-bit.conf:/fluent-bit/etc/fluent-bit.conf
+    depends_on:
+      - kafka
+    networks:
+      - network
+    container_name: "fluent-bit"
+
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: kafkaWebUI
+    environment:
+      KAFKA_CLUSTERS_0_NAME: local
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:39092
+      DYNAMIC_CONFIG_ENABLED: 'true'
+    ports: 
+        - 8080:8080
+    networks: 
+        - network
+    depends_on:
+        - kafka
+
+  kafka:
+    image: confluentinc/cp-kafka:5.4.1
+    container_name: kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - 9092:9092
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_CREATE_TOPICS: music:1:1
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:39092,HOST://0.0.0.0:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:39092,HOST://localhost:9092
+    # volumes: 
+    #   - ./data/container_data/kafka-data:/var/lib/kafka/data
+    networks:
+      - network
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.7.1-arm64
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "xpack.security.enabled=false"
+      - "network.host=0.0.0.0"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      -  ./esdata:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    networks:
+      - network
+
+  # mylinuxservice:
+  #       image: alpine:latest
+  #       container_name: my_linux_container
+  #       command: sh -c "apk update && apk add --no-cache curl && curl -X GET http://localhost:9200/_cat/indices"
+  #       networks:
+  #           - network
+  #       deploy:
+  #           resources:
+  #               limits:
+  #                   memory: 100M
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.7.1-arm64
+    container_name: kibana
+    ports:
+      - 5601:5601
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    networks:
+      - network
+    depends_on:
+      - elasticsearch      
+networks:
+  network:
+    driver: bridge
